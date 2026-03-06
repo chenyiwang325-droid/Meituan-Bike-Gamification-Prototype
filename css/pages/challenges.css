@@ -1,0 +1,65 @@
+/* ===== Challenges ===== */
+.challenge-card {
+    margin-bottom: var(--space-md);
+}
+
+.challenge-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.challenge-icon {
+    font-size: 32px;
+}
+
+.challenge-title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-lg);
+}
+
+.challenge-time {
+    font-size: var(--font-sm);
+    color: var(--text-tertiary);
+}
+
+.challenge-task {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-size: var(--font-sm);
+}
+
+.challenge-reward-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.daily-task {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--divider);
+}
+
+.daily-task:last-child {
+    border-bottom: none;
+}
+
+.daily-task-info {
+    flex: 1;
+}
+
+.daily-task-name {
+    font-weight: var(--font-weight-medium);
+}
+
+.daily-task-reward {
+    font-size: var(--font-sm);
+    color: var(--text-tertiary);
+}

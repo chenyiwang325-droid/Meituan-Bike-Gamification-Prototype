@@ -1,0 +1,70 @@
+/* ===== Star Coin Shop ===== */
+.star-coin-balance {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--bg-warm);
+}
+
+.balance-value {
+    font-size: var(--font-4xl);
+    font-weight: var(--font-weight-heavy);
+    color: var(--star-coin-gold);
+}
+
+.balance-label {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-md);
+}
+
+.shop-item-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.shop-item-info {
+    flex: 1;
+}
+
+.shop-item-name {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 2px;
+}
+
+.shop-item-category {
+    font-size: var(--font-xs);
+    color: var(--text-tertiary);
+}
+
+.shop-item-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.shop-price-value {
+    font-size: var(--font-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--star-coin-gold);
+}
+
+.shop-stock {
+    font-size: var(--font-xs);
+    color: var(--text-tertiary);
+}
+
+.shop-stock.limited {
+    color: var(--legendary-orange);
+}

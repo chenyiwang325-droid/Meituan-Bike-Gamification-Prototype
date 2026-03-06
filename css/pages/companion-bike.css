@@ -1,0 +1,137 @@
+/* ===== Companion & Bike Detail ===== */
+.cb-scene {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--bg-warm);
+    position: relative;
+}
+
+.cb-illustration {
+    font-size: 80px;
+    margin-bottom: var(--space-md);
+    position: relative;
+    display: inline-block;
+}
+
+.cb-companion {
+    position: relative;
+    z-index: 2;
+}
+
+.cb-bike {
+    position: absolute;
+    bottom: -10px;
+    right: -20px;
+    font-size: 48px;
+}
+
+.cb-bonus-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: rgba(82,196,26,0.08);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(82,196,26,0.2);
+}
+
+.cb-bonus-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-sm);
+    color: var(--success-green);
+}
+
+.cb-skill-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--divider);
+}
+
+.cb-skill-item:last-child {
+    border-bottom: none;
+}
+
+.cb-skill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: rgba(255,209,0,0.12);
+}
+
+.cb-skill-info {
+    flex: 1;
+}
+
+.cb-skill-name {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-md);
+}
+
+.cb-skill-level {
+    font-size: var(--font-xs);
+    color: var(--text-tertiary);
+}
+
+.cb-story-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--divider);
+}
+
+.cb-story-item:last-child {
+    border-bottom: none;
+}
+
+.cb-evolution {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    justify-content: center;
+    padding: var(--space-md) 0;
+}
+
+.cb-evo-stage {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-sm);
+    background: var(--divider);
+    color: var(--text-tertiary);
+}
+
+.cb-evo-stage.completed {
+    background: rgba(82,196,26,0.12);
+    color: var(--success-green);
+}
+
+.cb-evo-stage.current {
+    background: var(--meituan-yellow);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.cb-evo-arrow {
+    color: var(--text-tertiary);
+}
+
+.cb-feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+}
+
+.cb-actions {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+}

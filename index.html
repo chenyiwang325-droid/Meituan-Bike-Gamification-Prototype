@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>骑行能量站 - 美团单车</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/tabbar.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/pages/explore.css">
+    <link rel="stylesheet" href="css/pages/ride.css">
+    <link rel="stylesheet" href="css/pages/community.css">
+    <link rel="stylesheet" href="css/pages/profile.css">
+    <link rel="stylesheet" href="css/pages/explorer-detail.css">
+    <link rel="stylesheet" href="css/pages/companion-bike.css">
+    <link rel="stylesheet" href="css/pages/skill-tree.css">
+    <link rel="stylesheet" href="css/pages/challenges.css">
+    <link rel="stylesheet" href="css/pages/data-stats.css">
+    <link rel="stylesheet" href="css/pages/ride-detail.css">
+    <link rel="stylesheet" href="css/pages/route-detail.css">
+    <link rel="stylesheet" href="css/pages/collections.css">
+    <link rel="stylesheet" href="css/pages/star-coin.css">
+
+    <!-- ECharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Page Container -->
+        <div id="page-container"></div>
+
+        <!-- Tab Bar -->
+        <nav id="tabbar" class="tabbar">
+            <a href="#home" class="tabbar-item" data-page="home">
+                <svg class="tabbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="tabbar-label">首页</span>
+            </a>
+            <a href="#explore" class="tabbar-item" data-page="explore">
+                <svg class="tabbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+                <span class="tabbar-label">探索</span>
+            </a>
+            <a href="#ride" class="tabbar-item tabbar-item-center" data-page="ride">
+                <div class="tabbar-center-btn">
+                    <svg class="tabbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18.5" cy="17.5" r="3.5"></circle>
+                        <circle cx="5.5" cy="17.5" r="3.5"></circle>
+                        <circle cx="15" cy="5" r="1"></circle>
+                        <path d="M12 17.5V14l-3-3 4-3 2 3h2"></path>
+                    </svg>
+                </div>
+                <span class="tabbar-label">骑行</span>
+            </a>
+            <a href="#community" class="tabbar-item" data-page="community">
+                <svg class="tabbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="tabbar-label">社区</span>
+            </a>
+            <a href="#profile" class="tabbar-item" data-page="profile">
+                <svg class="tabbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="tabbar-label">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/store.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/pages/home.js"></script>
+    <script src="js/pages/explore.js"></script>
+    <script src="js/pages/ride.js"></script>
+    <script src="js/pages/community.js"></script>
+    <script src="js/pages/profile.js"></script>
+    <script src="js/pages/explorer-detail.js"></script>
+    <script src="js/pages/companion-bike.js"></script>
+    <script src="js/pages/skill-tree.js"></script>
+    <script src="js/pages/challenges.js"></script>
+    <script src="js/pages/data-stats.js"></script>
+    <script src="js/pages/ride-detail.js"></script>
+    <script src="js/pages/route-detail.js"></script>
+    <script src="js/pages/medal-collection.js"></script>
+    <script src="js/pages/bike-collection.js"></script>
+    <script src="js/pages/companion-collection.js"></script>
+    <script src="js/pages/star-coin.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* ===== Route Detail ===== */
+.route-hero {
+    padding: var(--space-lg);
+    background: var(--bg-warm);
+}
+
+.route-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.route-icon-large {
+    font-size: 48px;
+}
+
+.route-name {
+    font-size: var(--font-2xl);
+    font-weight: var(--font-weight-heavy);
+}
+
+.route-meta {
+    display: flex;
+    gap: var(--space-lg);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.route-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: var(--space-md);
+}
+
+.route-poi-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.route-poi {
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(74,144,226,0.08);
+    color: var(--xp-blue);
+    font-size: var(--font-xs);
+}
+
+.review-item {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--divider);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+}
+
+.review-user {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-sm);
+}
+
+.review-rating {
+    color: var(--meituan-yellow);
+}
+
+.review-comment {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}

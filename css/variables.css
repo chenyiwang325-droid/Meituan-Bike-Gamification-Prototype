@@ -1,0 +1,97 @@
+/* ===== Design Tokens ===== */
+:root {
+    /* Brand Colors */
+    --meituan-yellow: #FFD100;
+    --meituan-yellow-dark: #E6BC00;
+    --meituan-yellow-light: #FFE44D;
+
+    /* Currency Colors */
+    --energy-gold: #FFC300;
+    --energy-gradient: linear-gradient(135deg, #FFC300, #FFD54F);
+    --star-coin-gold: #FFD700;
+    --star-coin-gradient: linear-gradient(135deg, #FFD700, #FFF176);
+
+    /* Gamification Colors */
+    --xp-blue: #4A90E2;
+    --xp-gradient: linear-gradient(135deg, #4A90E2, #64B5F6);
+    --epic-purple: #9C27B0;
+    --epic-gradient: linear-gradient(135deg, #9C27B0, #CE93D8);
+    --legendary-orange: #FF6B00;
+    --legendary-gradient: linear-gradient(135deg, #FF6B00, #FFB74D);
+    --success-green: #52C41A;
+    --success-gradient: linear-gradient(135deg, #52C41A, #95DE64);
+
+    /* Neutral Colors */
+    --bg-primary: #F5F5F5;
+    --bg-card: #FFFFFF;
+    --bg-warm: linear-gradient(180deg, #FFF9E6, #FFFBF0);
+    --bg-dark: #1A1A1A;
+    --bg-dark-card: #2A2A2A;
+    --divider: #F0F0F0;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --text-inverse: #FFFFFF;
+
+    /* Rarity Colors */
+    --rarity-common: #B0BEC5;
+    --rarity-uncommon: #52C41A;
+    --rarity-rare: #4A90E2;
+    --rarity-epic: #9C27B0;
+    --rarity-legendary: #FF6B00;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 20px;
+    --space-2xl: 24px;
+    --space-3xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50%;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.14);
+    --shadow-glow-yellow: 0 0 20px rgba(255,209,0,0.3);
+    --shadow-glow-blue: 0 0 20px rgba(74,144,226,0.3);
+    --shadow-glow-purple: 0 0 20px rgba(156,39,176,0.3);
+    --shadow-glow-orange: 0 0 20px rgba(255,107,0,0.3);
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+    --font-xs: 10px;
+    --font-sm: 12px;
+    --font-md: 14px;
+    --font-lg: 16px;
+    --font-xl: 18px;
+    --font-2xl: 22px;
+    --font-3xl: 28px;
+    --font-4xl: 36px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    --font-weight-heavy: 700;
+
+    /* Layout */
+    --tabbar-height: 56px;
+    --header-height: 48px;
+    --page-padding: 16px;
+    --max-width: 414px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* Progress Bar */
+    --progress-height: 8px;
+    --progress-height-lg: 12px;
+}

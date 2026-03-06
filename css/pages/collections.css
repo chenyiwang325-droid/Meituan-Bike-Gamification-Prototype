@@ -1,0 +1,19 @@
+/* ===== Collections (Medals, Bikes, Companions) ===== */
+.collection-header {
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--divider);
+}
+
+.collection-progress {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.collection-filters {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+}
