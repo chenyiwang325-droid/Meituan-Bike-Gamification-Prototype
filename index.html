@@ -28,11 +28,374 @@
 
     <!-- ECharts CDN -->
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+    <!-- Project Info Styles (outside app framework) -->
+    <style>
+        .project-info-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 9999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(26, 26, 26, 0.85);
+            color: #FFD100;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            animation: infoBtnPulse 3s ease-in-out infinite;
+        }
+        .project-info-hint {
+            position: fixed;
+            top: 16px;
+            right: 72px;
+            z-index: 9998;
+            max-width: 210px;
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 209, 0, 0.35);
+            background: rgba(255, 255, 255, 0.96);
+            color: #1A1A1A;
+            font-size: 12px;
+            line-height: 1.5;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: hintFloat 2.8s ease-in-out infinite;
+        }
+        .project-info-hint::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: -7px;
+            width: 14px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.96);
+            border-top: 1px solid rgba(255, 209, 0, 0.35);
+            border-right: 1px solid rgba(255, 209, 0, 0.35);
+            transform: rotate(45deg);
+        }
+        .project-info-hint strong {
+            color: #1A1A1A;
+        }
+        .project-info-hint:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        }
+        .project-info-btn:hover {
+            transform: scale(1.1);
+            background: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 6px 24px rgba(255, 209, 0, 0.3);
+        }
+        @keyframes infoBtnPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+            50% { box-shadow: 0 4px 20px rgba(255,209,0,0.35); }
+        }
+        @keyframes hintFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .project-info-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .project-info-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .project-info-content {
+            width: 92%;
+            max-width: 480px;
+            max-height: 85vh;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+        }
+        .project-info-modal.active .project-info-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .project-info-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
+            color: #FFD100;
+        }
+        .project-info-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .project-info-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .project-info-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .project-info-body {
+            padding: 24px;
+            overflow-y: auto;
+            max-height: calc(85vh - 72px);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .project-info-section {
+            margin-bottom: 24px;
+        }
+        .project-info-section:last-child {
+            margin-bottom: 0;
+        }
+        .project-info-section h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin: 0 0 10px 0;
+        }
+        .project-info-section p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0 0 8px 0;
+        }
+        .project-info-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .project-info-section li {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #555;
+            padding: 3px 0 3px 16px;
+            position: relative;
+        }
+        .project-info-section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #FFD100;
+        }
+
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: #F5F5F5;
+            color: #1A1A1A;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .project-link:hover {
+            background: #1A1A1A;
+            color: #FFD100;
+        }
+
+        .project-info-footer {
+            margin-top: 20px;
+            padding: 16px;
+            background: #FFF9E6;
+            border-radius: 12px;
+            border: 1px solid rgba(255,209,0,0.2);
+        }
+        .project-info-footer p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+    </style>
+
+    <script>
+        function toggleProjectInfo() {
+            const modal = document.getElementById('project-info-modal');
+            modal.classList.toggle('active');
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('project-info-modal').classList.remove('active');
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="app">
         <!-- Page Container -->
         <div id="page-container"></div>
+
+        <!-- Project Info Hint Bubble -->
+        <div id="project-info-hint" class="project-info-hint" onclick="toggleProjectInfo()">
+            <strong>点击查看作品说明</strong><br>了解构建思路与功能设计
+        </div>
+
+        <!-- Project Info Button -->
+        <button id="project-info-btn" class="project-info-btn" onclick="toggleProjectInfo()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+        </button>
+
+        <!-- Project Info Modal -->
+        <div id="project-info-modal" class="project-info-modal">
+            <div class="project-info-content">
+                <div class="project-info-header">
+                    <h2>作品说明</h2>
+                    <button class="project-info-close" onclick="toggleProjectInfo()">×</button>
+                </div>
+                <div class="project-info-body">
+                    <div class="project-info-section">
+                        <h3>📱 项目简介</h3>
+                        <p>这是一个基于美团单车的<strong>游戏化骑行记录与激励工具</strong>的前端高保真原型，旨在通过游戏化机制提升用户骑行体验和粘性。</p>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>💡 构建思路</h3>
+                        <p>本项目采用 <strong>Vibe Coding</strong> 方式，借助大模型（Claude Opus 4.6）完成从需求分析到原型落地的全流程：</p>
+                        <ul>
+                            <li><strong>需求与竞品分析</strong>：对哈啰出行、青桔单车、美团现状进行深度分析，发现美团在游戏化激励方面完全空白，而其生态优势（外卖、酒旅联动）是独特护城河</li>
+                            <li><strong>核心设计方向</strong>：构建统一的游戏化世界观，以"城市探索者"为核心身份，将骑行数据转化为游戏进度，让每次出行都有意义</li>
+                            <li><strong>界面设计文档</strong>：依托大模型撰写了详细的界面构建规范，明确了16个页面的布局、交互流程、视觉规范和动效方案</li>
+                            <li><strong>原型实现</strong>：基于设计文档，通过 Vibe Coding 迭代式构建，最终产出可交互的高保真原型</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>🏗️ 系统架构（7层体系）</h3>
+                        <p>整个游戏化系统围绕<strong>"探索-成长-分享"</strong>三大核心展开，由7个功能层组成：</p>
+                        <ul>
+                            <li><strong>基础层 — 骑行记录</strong>：自动记录骑行数据，提供可视化统计（ECharts图表）</li>
+                            <li><strong>核心层 — 探索者成长</strong>：1-100级等级体系 + 双货币系统（能量⚡养成 / 星币⭐兑换）+ 技能树</li>
+                            <li><strong>养成层 — 伙伴与单车</strong>：虚拟伙伴陪伴骑行、解锁故事章节；虚拟单车升级、提升属性加成</li>
+                            <li><strong>探索层 — 城市探索</strong>：区域解锁、特色路线发现、城市记忆收集</li>
+                            <li><strong>挑战层 — 挑战赛</strong>：季度主题挑战、城市PK、每日任务、勋章排行</li>
+                            <li><strong>社区层 — 骑行社区</strong>：路线分享、打卡动态、好友互动</li>
+                            <li><strong>生态层 — 美团联动</strong>：星币兑换美团神券、会员成长加速、路线商家推荐</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>✨ 核心特性</h3>
+                        <ul>
+                            <li><strong>双货币系统</strong>：能量⚡用于养成，星币⭐用于兑换美团优惠，互不混淆</li>
+                            <li><strong>探索者成长</strong>：1-100级等级体系，解锁新功能和权益</li>
+                            <li><strong>伙伴养成</strong>：虚拟伙伴陪伴骑行，喂养成长、解锁技能与故事</li>
+                            <li><strong>单车养成</strong>：虚拟单车升级，提升能量/经验/星币加成</li>
+                            <li><strong>技能树系统</strong>：多分支技能解锁，提供各类骑行加成</li>
+                            <li><strong>挑战系统</strong>：季节性挑战、每日任务、城市PK</li>
+                            <li><strong>城市探索</strong>：区域解锁、路线收集、城市记忆</li>
+                            <li><strong>社区互动</strong>：路线分享、打卡动态、点赞评论</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>🎨 设计亮点</h3>
+                        <ul>
+                            <li>美团品牌色调，游戏化视觉风格</li>
+                            <li>16个页面完整覆盖（5个主页面 + 11个详情页）</li>
+                            <li>ECharts数据可视化集成</li>
+                            <li>丰富的动画效果（进度条、数字增长、呼吸浮动等）</li>
+                            <li>移动端优先的响应式设计</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>🛠️ 技术实现</h3>
+                        <ul>
+                            <li><strong>技术栈</strong>：HTML5 + CSS3 + JavaScript（原生，无框架）</li>
+                            <li><strong>架构</strong>：Hash路由单页应用，模块化设计</li>
+                            <li><strong>数据</strong>：完整的Mock数据体系</li>
+                            <li><strong>代码量</strong>：4,500+ 行代码，43个文件</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>🎯 使用说明</h3>
+                        <p>本原型为<strong>静态展示版本</strong>，所有数据均为模拟数据。您可以：</p>
+                        <ul>
+                            <li>点击底部5个Tab切换主页面</li>
+                            <li>点击首页各元素进入详情页</li>
+                            <li>浏览图鉴、查看数据统计</li>
+                            <li>体验完整的游戏化交互流程</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-info-section">
+                        <h3>🔗 项目链接</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/chenyiwang325-droid/Meituan-Bike-Gamification-Prototype" target="_blank" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub 仓库
+                            </a>
+                            <a href="https://chenyiwang325-droid.github.io/Meituan-Bike-Gamification-Prototype/" target="_blank" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                在线演示
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-info-footer">
+                        <p>💡 <strong>提示</strong>：本作品为产品设计作品集展示，使用 Vibe Coding + Claude Opus 4.6 辅助完成需求分析、界面设计与原型开发全流程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Tab Bar -->
         <nav id="tabbar" class="tabbar">
