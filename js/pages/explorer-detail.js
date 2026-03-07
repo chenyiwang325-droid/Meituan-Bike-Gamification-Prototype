@@ -8,7 +8,7 @@ Pages.explorerDetail = function() {
         ${Components.pageHeader('探索者档案')}
         
         <div class="explorer-hero">
-            <div class="avatar avatar-xl" style="margin:0 auto var(--space-md)">${u.avatar}</div>
+            <div style="margin:0 auto var(--space-md)">${Components.userAvatar(u, 80)}</div>
             <div style="font-size:var(--font-2xl);font-weight:var(--font-weight-heavy)">探索者 Lv.${u.level}</div>
             <div class="explorer-title-badge">${u.title}</div>
             <div style="margin-top:var(--space-lg)">

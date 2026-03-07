@@ -207,9 +207,13 @@ const Store = {
             {
                 id: 1,
                 name: '春季赏花挑战赛',
-                icon: '🌸',
+                iconName: 'camera',
                 daysLeft: 15,
                 progress: 75,
+                participants: 12356,
+                carbonSaved: 12.4,
+                carbonTarget: 18,
+                bannerGradient: 'var(--challenge-gradient-spring)',
                 tasks: [
                     { name: '完成3条赏花路线', current: 3, target: 3, completed: true },
                     { name: '骑行累计20km', current: 25.6, target: 20, completed: true },
@@ -217,10 +221,103 @@ const Store = {
                     { name: '分享1次打卡', current: 0, target: 1, completed: false }
                 ],
                 rewards: [
-                    { type: '勋章', name: '春日骑士勋章', icon: '🏅' },
-                    { type: '能量', value: 1000, icon: '⚡' },
-                    { type: '伙伴', name: '樱花精灵', icon: '🎁' }
+                    { type: '勋章', name: '春日骑士勋章', iconName: 'medal' },
+                    { type: '能量', value: 1000, iconName: 'fire' },
+                    { type: '伙伴', name: '樱花精灵', iconName: 'trophy' }
                 ]
+            },
+            {
+                id: 2,
+                name: '低碳通勤守护计划',
+                iconName: 'leaf',
+                daysLeft: 9,
+                progress: 48,
+                participants: 8964,
+                carbonSaved: 7.6,
+                carbonTarget: 16,
+                bannerGradient: 'var(--challenge-gradient-carbon)',
+                tasks: [
+                    { name: '工作日通勤骑行5次', current: 4, target: 5, completed: false },
+                    { name: '累计减碳10kg', current: 7.6, target: 10, completed: false },
+                    { name: '加入1条官方绿色路线', current: 1, target: 1, completed: true }
+                ],
+                rewards: [
+                    { type: '勋章', name: '低碳先行者', iconName: 'medal' },
+                    { type: '能量', value: 680, iconName: 'fire' },
+                    { type: '星币', value: 88, iconName: 'trophy' }
+                ]
+            }
+        ],
+        completed: [
+            {
+                id: 101,
+                name: '元宵夜骑点亮城市',
+                iconName: 'check',
+                completedDate: '2026-02-24',
+                rewardText: '获得 星币 80 + 城市夜行者称号',
+                participants: 5321,
+                carbonSaved: 6.8,
+                bannerGradient: 'var(--challenge-gradient-city)'
+            },
+            {
+                id: 102,
+                name: '周末滨河慢骑计划',
+                iconName: 'route',
+                completedDate: '2026-02-18',
+                rewardText: '获得 能量 520 + 春风车铃挂件',
+                participants: 3188,
+                carbonSaved: 4.2,
+                bannerGradient: 'var(--challenge-gradient-spring)'
+            }
+        ],
+        available: [
+            {
+                id: 201,
+                name: '绿色出行公益挑战',
+                subtitle: '和全城骑友一起，把骑行里程转化为真实减碳行动',
+                iconName: 'leaf',
+                participants: 28654,
+                carbonSaved: 362.8,
+                carbonTarget: 500,
+                bannerGradient: 'var(--challenge-gradient-carbon)',
+                goals: [
+                    { name: '7天内完成8次骑行', target: '8次' },
+                    { name: '累计骑行30km', target: '30km' },
+                    { name: '贡献减碳12kg', target: '12kg' }
+                ],
+                officialRoutes: ['东四胡同低碳通勤线', '国贸CBD绿色接驳线', '亮马河滨水慢骑线']
+            },
+            {
+                id: 202,
+                name: '城市PK赛·朝阳 VS 海淀',
+                subtitle: '选择你的主场区域，用骑行里程为城区战队加分',
+                iconName: 'trophy',
+                participants: 18422,
+                carbonSaved: 228.4,
+                carbonTarget: 360,
+                bannerGradient: 'var(--challenge-gradient-city)',
+                goals: [
+                    { name: '完成任意3条城区路线', target: '3条' },
+                    { name: '发布2次战队打卡', target: '2次' },
+                    { name: '邀请1位好友加入', target: '1位' }
+                ],
+                officialRoutes: ['朝阳公园活力环线', '中关村科技探索线']
+            },
+            {
+                id: 203,
+                name: '春日探花骑行',
+                subtitle: '跟随官方花路地图收集城市春色，解锁季节限定奖励',
+                iconName: 'camera',
+                participants: 9620,
+                carbonSaved: 145.6,
+                carbonTarget: 220,
+                bannerGradient: 'var(--challenge-gradient-spring)',
+                goals: [
+                    { name: '打卡4个春季花点', target: '4个' },
+                    { name: '完成1次路线分享', target: '1次' },
+                    { name: '上传3张骑行瞬间', target: '3张' }
+                ],
+                officialRoutes: ['玉渊潭樱花线', '奥森春芽线', '亮马河晚樱线']
             }
         ],
         daily: [
@@ -374,24 +471,135 @@ const Store = {
     communityPosts: [
         {
             id: 1,
-            user: { name: '骑行达人', avatar: '🚴', level: 32 },
-            time: '2小时前',
-            content: '今天完成了环二环路线，风景太美了！',
-            images: ['🌆', '🌇'],
+            type: 'route',
+            user: { name: '骑行达人', avatar: '骑', level: 32 },
+            time: '18分钟前',
+            content: '把环二环拆成了黄昏版和夜景版两段骑，东直门这一段风从梧桐树缝里吹过来，超适合收集城市光影。',
             route: '环二环城市风光',
             likes: 156,
             comments: 23,
-            liked: false
+            liked: false,
+            routeStats: { distance: '8.5km', duration: '42分钟', energy: '+160⚡' },
+            mapSeed: 1,
+            photos: ['sunset', 'city-night', 'warm-road']
         },
         {
             id: 2,
-            user: { name: '美食探索者', avatar: '🍜', level: 28 },
-            time: '5小时前',
-            content: '三里屯的美食路线真的太棒了，推荐给大家！',
-            images: ['🍔', '🍕'],
+            type: 'route',
+            user: { name: '美食探索者', avatar: '美', level: 28 },
+            time: '52分钟前',
+            content: '三里屯这条路线我又刷了一遍，沿路新开的面包店和咖啡馆都很适合骑到一半停下来补给。',
             route: '逛吃三里屯',
             likes: 234,
             comments: 45,
+            liked: true,
+            routeStats: { distance: '5.2km', duration: '26分钟', energy: '+108⚡' },
+            mapSeed: 2,
+            photos: ['amber-food', 'pink-store', 'golden-hour']
+        },
+        {
+            id: 3,
+            type: 'route',
+            user: { name: '科技骑手', avatar: '科', level: 21 },
+            time: '1小时前',
+            content: '中关村科技之旅很适合通勤顺手完成，路况顺，打卡点密，晚上楼宇灯光也很赛博。',
+            route: '中关村科技之旅',
+            likes: 89,
+            comments: 11,
+            liked: false,
+            routeStats: { distance: '6.8km', duration: '31分钟', energy: '+126⚡' },
+            mapSeed: 3,
+            photos: ['tech-blue', 'purple-grid']
+        },
+        {
+            id: 4,
+            type: 'checkin',
+            user: { name: '慢骑观察员', avatar: '慢', level: 19 },
+            time: '2小时前',
+            content: '亮马河的风终于有一点春天的味道了，沿河慢慢骑过去，心情都被拉满。',
+            location: '亮马河步道',
+            mood: '治愈',
+            achievement: '连续骑行7天',
+            likes: 76,
+            comments: 18,
+            liked: false
+        },
+        {
+            id: 5,
+            type: 'checkin',
+            user: { name: '通勤冠军', avatar: '通', level: 35 },
+            time: '3小时前',
+            content: '早高峰避开了堵车，国贸到建国门只用了14分钟，今天通勤效率直接拉满。',
+            location: '国贸 CBD',
+            mood: '高能',
+            achievement: '通勤极速达人',
+            likes: 132,
+            comments: 26,
+            liked: true
+        },
+        {
+            id: 6,
+            type: 'checkin',
+            user: { name: '花路收集者', avatar: '花', level: 24 },
+            time: '4小时前',
+            content: '玉渊潭的樱花已经开了一片，今天顺手收了两个春日记忆，路上每个人都在拍照。',
+            location: '玉渊潭公园东门',
+            mood: '惊喜',
+            achievement: '春日记忆 ×2',
+            likes: 168,
+            comments: 39,
+            liked: false
+        },
+        {
+            id: 7,
+            type: 'challenge',
+            user: { name: '低碳领骑官', avatar: '低', level: 41 },
+            time: '5小时前',
+            content: '今天在公益挑战里又多贡献了2.8kg减碳，已经带着队友把社区排名冲进前十。',
+            challengeRef: 201,
+            carbonSaved: 2.8,
+            isOfficial: false,
+            likes: 204,
+            comments: 35,
+            liked: true
+        },
+        {
+            id: 8,
+            type: 'challenge',
+            user: { name: '美团骑行官方', avatar: '官', level: 99 },
+            time: '6小时前',
+            content: '绿色出行公益挑战今日解锁新路线：东四胡同低碳通勤线。完成官方路线可额外获得公益徽章进度。',
+            challengeRef: 201,
+            carbonSaved: 86.4,
+            isOfficial: true,
+            likes: 562,
+            comments: 91,
+            liked: false
+        },
+        {
+            id: 9,
+            type: 'challenge',
+            user: { name: '城区应援团', avatar: '城', level: 30 },
+            time: '7小时前',
+            content: '海淀战队今天靠晚高峰集体通勤反超了朝阳区，晚上还有一波夜骑集结，冲榜继续！',
+            challengeRef: 202,
+            carbonSaved: 5.1,
+            isOfficial: false,
+            likes: 147,
+            comments: 27,
+            liked: false
+        },
+        {
+            id: 10,
+            type: 'challenge',
+            user: { name: '春日观察站', avatar: '春', level: 27 },
+            time: '9小时前',
+            content: '完成了春日探花骑行的第三个花点，沿路颜色从嫩绿到粉白一层层展开，真的很值得骑一遍。',
+            challengeRef: 203,
+            carbonSaved: 3.4,
+            isOfficial: false,
+            likes: 118,
+            comments: 20,
             liked: true
         }
     ],

@@ -1,1 +1,156 @@
-/* Community page - uses mostly shared components */
+/* ===== Community Page ===== */
+
+/* Post card */
+.community-post {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.community-post-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.community-post-header-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.community-post-header-name {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.community-post-header-meta {
+    font-size: var(--font-xs);
+    color: var(--text-tertiary);
+    margin-top: 2px;
+}
+
+.community-post-content {
+    font-size: var(--font-md);
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+/* Post type indicator */
+.post-type-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-size: var(--font-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.post-type-indicator.type-route {
+    background: rgba(74,144,226,0.12);
+    color: var(--xp-blue);
+}
+
+.post-type-indicator.type-checkin {
+    background: rgba(82,196,26,0.12);
+    color: var(--success-green);
+}
+
+.post-type-indicator.type-challenge {
+    background: rgba(255,107,0,0.12);
+    color: var(--legendary-orange);
+}
+
+/* Route stats row */
+.community-post-stats {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.community-post-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Route share media block */
+.community-route-media {
+    margin-top: var(--space-md);
+}
+
+.community-route-media-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+}
+
+.community-route-media-title span:last-child {
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Actions row */
+.community-post-actions {
+    display: flex;
+    gap: var(--space-lg);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--divider);
+    font-size: var(--font-sm);
+    color: var(--text-tertiary);
+}
+
+
+/* Checkin extras */
+.community-checkin-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+/* Challenge post extras */
+.community-challenge-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(255,107,0,0.06);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+    font-size: var(--font-sm);
+}
+
+.community-challenge-meta.official {
+    background: rgba(47,191,113,0.08);
+    border-left: 3px solid var(--carbon-green);
+}
+
+/* Official badge */
+.official-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 6px;
+    border-radius: 100px;
+    font-size: var(--font-xs);
+    font-weight: var(--font-weight-bold);
+    background: var(--legendary-orange);
+    color: #fff;
+}

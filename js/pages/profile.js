@@ -7,7 +7,7 @@ Pages.profile = function() {
     <div class="page">
         <div class="section" style="padding-top:var(--space-2xl)">
             <div class="card card-padded text-center">
-                <div class="avatar avatar-xl" style="margin:0 auto var(--space-md)">${u.avatar}</div>
+                <div style="margin:0 auto var(--space-md)">${Components.userAvatar(u, 80)}</div>
                 <div style="font-size:var(--font-2xl);font-weight:var(--font-weight-bold)">${u.name}</div>
                 <div style="color:var(--text-secondary);margin-top:4px">${u.title}</div>
                 <div style="margin-top:var(--space-md);display:flex;gap:var(--space-lg);justify-content:center">

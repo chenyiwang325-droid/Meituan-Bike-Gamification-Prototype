@@ -8,7 +8,7 @@ Pages.routeDetail = function(routeId) {
         ${Components.pageHeader(route.name)}
 
         <!-- Map -->
-        ${Components.mockMap(250)}
+        ${Components.routeMap(250, { seed: route.id })}
 
         <!-- Route Info -->
         <div class="route-hero">

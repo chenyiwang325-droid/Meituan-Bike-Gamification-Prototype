@@ -15,7 +15,7 @@ Pages.home = function() {
     <div class="page home-page">
         <!-- Top Profile Bar -->
         <div class="home-profile-bar" onclick="Router.navigate('explorer-detail')">
-            <div class="avatar">${u.avatar}</div>
+            ${Components.userAvatar(u)}
             <div class="home-profile-info">
                 <div class="home-profile-name">
                     ${u.name} <span class="home-level-badge">Lv.${u.level}</span>

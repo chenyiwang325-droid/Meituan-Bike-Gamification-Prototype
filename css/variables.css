@@ -20,6 +20,11 @@
     --legendary-gradient: linear-gradient(135deg, #FF6B00, #FFB74D);
     --success-green: #52C41A;
     --success-gradient: linear-gradient(135deg, #52C41A, #95DE64);
+    --carbon-green: #2FBF71;
+    --carbon-gradient: linear-gradient(135deg, #2FBF71, #8BE78B);
+    --challenge-gradient-spring: linear-gradient(135deg, #FFD86F 0%, #FC6262 100%);
+    --challenge-gradient-carbon: linear-gradient(135deg, #163D2A 0%, #2FBF71 48%, #B4F39A 100%);
+    --challenge-gradient-city: linear-gradient(135deg, #3A4DFF 0%, #38BDF8 52%, #A78BFA 100%);
 
     /* Neutral Colors */
     --bg-primary: #F5F5F5;

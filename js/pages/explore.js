@@ -15,7 +15,7 @@ Pages.explore = function() {
         </div>
 
         <div class="section">
-            ${Components.mockMap(200)}
+            ${Components.routeMap(200, { seed: 0 })}
         </div>
 
         <div class="section">
@@ -51,7 +51,7 @@ Pages.explore = function() {
             <div class="section-title">特色路线推荐</div>
             ${Store.routes.map(route => `
                 <div class="card stagger-item" style="margin-bottom:var(--space-md);cursor:pointer" onclick="Router.navigate('route-detail/${route.id}')">
-                    ${Components.mockMap(150)}
+                    ${Components.routeMap(150, { seed: route.id })}
                     <div class="card-padded">
                         <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm)">
                             <span style="font-size:20px">${route.icon}</span>

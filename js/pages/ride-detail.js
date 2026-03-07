@@ -9,7 +9,7 @@ Pages.rideDetail = function(rideId) {
 
         <!-- Map -->
         <div class="section" style="padding-bottom:0">
-            ${Components.mockMap(200)}
+            ${Components.routeMap(200, { seed: ride.id })}
         </div>
 
         <!-- Core Stats -->

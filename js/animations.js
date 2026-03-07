@@ -91,7 +91,7 @@ const Animations = {
         post.likes += post.liked ? 1 : -1;
 
         btn.classList.toggle('liked');
-        btn.innerHTML = `${post.liked ? '❤️' : '🤍'} ${post.likes}`;
+        btn.innerHTML = `${Components.svgIcon(post.liked ? 'heart-filled' : 'heart', 14)} ${post.likes}`;
 
         if (post.liked) {
             btn.style.transform = 'scale(1.3)';
